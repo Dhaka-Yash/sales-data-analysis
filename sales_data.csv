@@ -1,0 +1,21 @@
+import pandas as pd
+import numpy as np
+
+np.random.seed(42)
+
+rows = 200
+
+data = {
+    "Order_ID": range(1001, 1001 + rows),
+    "Date": pd.date_range(start="2024-01-01", periods=rows, freq="D"),
+    "Product": np.random.choice(["Laptop", "Phone", "Tablet", "Headphones"], rows),
+    "Category": np.random.choice(["Electronics", "Accessories"], rows),
+    "Quantity": np.random.randint(1, 6, rows),
+    "Price": np.random.randint(500, 50000, rows),
+    "Region": np.random.choice(["North", "South", "East", "West"], rows)
+}
+
+df = pd.DataFrame(data)
+df.to_csv("sales_data.csv", index=False)
+
+print("sales_data.csv file created successfully")
